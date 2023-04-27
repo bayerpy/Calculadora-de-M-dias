@@ -4,7 +4,7 @@ const imgReprovado = '<img src="./images/images/reprovado.png" alt="Emoji decepÃ
 const atividades = [];
 const notas = [];
 const spanAprovado = '<span class="resultado aprovado">Aprovado</span>';
-const spanReprovado = '<span class="resultado aprovado">Reprovado</span>';
+const spanReprovado = '<span class="resultado reprovado">Reprovado</span>';
 const notaMinima = parseFloat(prompt("Digite a nota minima"))
 
 let linhas = '';
@@ -15,6 +15,7 @@ form.addEventListener('submit', function(e) {
     adicionaLinha();
     atualizaTabela();
     atualizaMediaFinal();
+    calculaMediaFinal();
 });
 
 function adicionaLinha() {
@@ -49,10 +50,10 @@ function atualizaMediaFinal() {
     const mediaFinal = calculaMediaFinal();
 
     document.getElementById('media-final-valor').innerHTML = mediaFinal;
-    document.getElementById('media-final-resultado').innerHTML = mediaFinal >= notaMinima ? 'spanAprovado' : 'spanReprovado';
+    document.getElementById('media-final-resultado').innerHTML = mediaFinal >= notaMinima ? spanAprovado : spanReprovado;
 };
 
-function atualizaMediaFinal() {
+function calculaMediaFinal() {
     let somaDasNotas = 0;
 
     for (let i = 0; i < notas.length; i++) {
